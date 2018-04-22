@@ -1,0 +1,14 @@
+{
+  "name": "Dankreek-InputButton",
+  "description": "Digital button input abstraction",
+  "keywords": [
+    "buttons"
+  ],
+  "authors": {
+      "name": "Justin May",
+      "email": "may.justin@gmail.com"
+  },
+  "dependencies": {
+    "Bounce2": "2.4.1"
+  }
+}
