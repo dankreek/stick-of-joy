@@ -2,6 +2,7 @@
 #define PLATFORM_GAME_MODE_H
 
 #include <JoystickOut.hpp>
+#include <Logger.hpp>
 #include "IJoystickMode.hpp"
 
 namespace dankreek {
@@ -23,6 +24,7 @@ namespace dankreek {
     virtual void bButton(bool isPressed);
 
   protected:
+    Logger logger = Logger("PlatformGameMode");
     JoystickOut *_joy1, *_joy2;
     JoystickOut *_selectedJoystick;
   };
