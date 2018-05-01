@@ -2,6 +2,7 @@
 #define JOYSTICKOUT_H
 
 #include <cstdint>
+#include <Logger.hpp>
 
 namespace dankreek {
 
@@ -36,6 +37,7 @@ public:
   void setAllPressed(bool isPressed);
 
 protected:
+  Logger logger = Logger("JoystickOut");
   OutputButton *_upButton, *_downButton, *_leftButton, *_rightButton, *_fireButton;
 };
 }
