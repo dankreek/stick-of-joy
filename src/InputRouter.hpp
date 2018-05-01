@@ -1,6 +1,7 @@
 #ifndef INPUT_ROUTER_H
 #define INPUT_ROUTER_H
 
+#include <Logger.hpp>
 #include <JoystickOut.hpp>
 #include "modes/IJoystickMode.hpp"
 #include "modes/PlatformGameMode.hpp"
@@ -25,6 +26,7 @@ namespace dankreek {
     void outputSelectPressed();
 
   private:
+    Logger logger = Logger("InputRouter");
     JoystickOut* _joy1;
     JoystickOut* _joy2;
     PlatformGameMode* _platformGameMode;
