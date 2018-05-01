@@ -45,27 +45,27 @@ JoystickOut::JoystickOut(
 
 void JoystickOut::setUpPressed(bool isPressed) {
   this->upButton->setPressed(isPressed);
-  this->logger.log("setUpPressed isPressed=", isPressed);
+  this->logger.logln("setUpPressed isPressed=", isPressed);
 }
 
 void JoystickOut::setDownPressed(bool isPressed) {
   this->downButton->setPressed(isPressed);
-  this->logger.log("setDownPressed isPressed=", isPressed);
+  this->logger.logln("setDownPressed isPressed=", isPressed);
 }
 
 void JoystickOut::setLeftPressed(bool isPressed) {
   this->leftButton->setPressed(isPressed);
-  this->logger.log("setLeftPressed isPressed=", isPressed);
+  this->logger.logln("setLeftPressed isPressed=", isPressed);
 }
 
 void JoystickOut::setRightPressed(bool isPressed) {
   this->rightButton->setPressed(isPressed);
-  this->logger.log("setRightPressed isPressed=", isPressed);
+  this->logger.logln("setRightPressed isPressed=", isPressed);
 }
 
 void JoystickOut::setFirePressed(bool isPressed) {
   this->fireButton->setPressed(isPressed);
-  this->logger.log("setFirePressed isPressed=", isPressed);
+  this->logger.logln("setFirePressed isPressed=", isPressed);
 }
 
 void JoystickOut::setAllPressed(bool isPressed) {
@@ -74,7 +74,7 @@ void JoystickOut::setAllPressed(bool isPressed) {
   this->leftButton->setPressed(isPressed);
   this->rightButton->setPressed(isPressed);
   this->fireButton->setPressed(isPressed);
-  this->logger.log("setAllPressed isPressed=", isPressed);
+  this->logger.logln("setAllPressed isPressed=", isPressed);
 }
 
 }

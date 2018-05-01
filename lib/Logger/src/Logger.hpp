@@ -13,18 +13,28 @@ namespace dankreek {
     Logger(const char* className);
 
     template <typename H, typename... T> void log(H p, T... t) {
+      this->printHeader();
+      Serial.print(p);
+      this->_log(t...);
+      Serial.print(' ');
+    }
+
+    template <typename H, typename... T> void logln(H p, T... t) {
+      this->printHeader();
+      Serial.print(p);
+      this->_log(t...);
+      Serial.println();
+    }
+
+  protected:
+    void printHeader() {
       Serial.print('[');
       Serial.print(this->_className);
       Serial.print(']');
       Serial.print(' ');
-      Serial.print(p);
-      this->_log(t...);
     }
 
-  protected:
-    void _log() {
-      Serial.println();
-    }
+    void _log() {}
     template <typename H, typename... T> void _log(H p, T... t) {
       Serial.print(p);
       this->_log(t...);
