@@ -10,8 +10,8 @@ class OutputButton {
 public:
   OutputButton(uint8_t pin);
   void setPressed(bool isPressed);
+  bool isPressed;
 protected:
-  bool _isPressed;
   uint8_t _pin;
 };
 
@@ -36,9 +36,10 @@ public:
   // Send isPressed to all directions and fire button
   void setAllPressed(bool isPressed);
 
+  OutputButton *upButton, *downButton, *leftButton, *rightButton, *fireButton;
+
 protected:
   Logger logger = Logger("JoystickOut");
-  OutputButton *_upButton, *_downButton, *_leftButton, *_rightButton, *_fireButton;
 };
 }
 #endif
