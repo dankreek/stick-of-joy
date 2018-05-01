@@ -14,13 +14,15 @@ namespace dankreek {
     FireButtonsIn(
       IInputButton &aButton, IInputButton &bButton,
       PwmLed &autoFireALed, PwmLed &autoFireBLed,
-      Pot &autoFireAPot, Pot &autoFireBPot
+      Pot &autoFireAPot, Pot &autoFireBPot,
+      IInputButton &autoFireSelectA, IInputButton &autoFireSelectB
     );
 
     virtual void update(InputRouter &inputRouter);
 
   protected:
     IInputButton *_aButton, *_bButton;
+    IInputButton *_autoFireSelectA, *_autoFireSelectB;
     Pot *_autoFireAPot, *_autoFireBPot;
     PwmLed *_autoFireALed, *_autoFireBLed;
   };

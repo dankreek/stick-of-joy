@@ -2,6 +2,7 @@
 #define JOYSTICK_IN_H
 
 #include <IInputButton.hpp>
+#include <Logger.hpp>
 #include "IInputModule.hpp"
 #include "InputRouter.hpp"
 
@@ -20,6 +21,7 @@ public:
   virtual void update(InputRouter &inputRouter);
 
 private:
+  Logger logger = Logger("JoystickIn");
   IInputButton* _up;
   IInputButton* _down;
   IInputButton* _left;

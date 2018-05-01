@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <Logger.hpp>
 #include <IInputButton.hpp>
 #include "InputRouter.hpp"
 #include "JoystickIn.hpp"
@@ -18,7 +19,6 @@ namespace dankreek {
 
   void JoystickIn::update(InputRouter &inputRouter) {
     if (this->_up->update()) {
-      Serial.println("Joystick Up read");
       inputRouter.up(this->_up->fell());
     }
 

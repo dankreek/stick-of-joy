@@ -8,8 +8,10 @@
 namespace dankreek {
   FireButtonsIn::FireButtonsIn(
     IInputButton &aButton, IInputButton &bButton,
-      PwmLed &autoFireALed, PwmLed &autoFireBLed,
-      Pot &autoFireAPot, Pot &autoFireBPot
+    PwmLed &autoFireALed, PwmLed &autoFireBLed,
+    Pot &autoFireAPot, Pot &autoFireBPot,
+    IInputButton &autoFireSelectA, IInputButton &autoFireSelectB
+
   ) {
     this->_aButton = &aButton;
     this->_bButton = &bButton;
@@ -17,6 +19,8 @@ namespace dankreek {
     this->_autoFireBLed = &autoFireBLed;
     this->_autoFireAPot = &autoFireAPot;
     this->_autoFireBPot = &autoFireBPot;
+    this->_autoFireSelectA = &autoFireSelectA;
+    this->_autoFireSelectB = &autoFireSelectB;
   }
 
   void FireButtonsIn::update(InputRouter &router) {
@@ -25,7 +29,6 @@ namespace dankreek {
     }
 
     if (this->_bButton->update()) {
-      Serial.println("B button changed");
       router.bButton(this->_bButton->fell());
     }
   }
