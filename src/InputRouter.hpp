@@ -14,6 +14,8 @@ namespace dankreek {
       PlatformGameMode &platformGameMode
     );
 
+    void init();
+
     void up(bool isPressed);
     void down(bool isPressed);
     void left(bool isPressed);
@@ -30,6 +32,10 @@ namespace dankreek {
     JoystickOut* _joy1;
     JoystickOut* _joy2;
     PlatformGameMode* _platformGameMode;
+
+    bool _upIsPressed, _downIsPressed,
+         _leftIsPressed, _rightIsPressed,
+         _aButtonIsPressed, _bButtonIsPressed;
 
     IJoystickMode* _selectedMode;
   };

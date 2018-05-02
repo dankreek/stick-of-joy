@@ -36,6 +36,9 @@ public:
   // Send isPressed to all directions and fire button
   void setAllPressed(bool isPressed);
 
+  // Set the state of all of this joystick's OutputButtons to the other 
+  void applyState(JoystickOut *other);
+
   OutputButton *upButton, *downButton, *leftButton, *rightButton, *fireButton;
 
 protected:

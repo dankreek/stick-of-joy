@@ -7,25 +7,50 @@ namespace dankreek {
   PlatformGameMode::PlatformGameMode(JoystickOut &joy1, JoystickOut &joy2) {
     this->_joy1 = &joy1;
     this->_joy2 = &joy2;
+    this->_joy1->setAllPressed(false);
+    this->_joy2->setAllPressed(false);
+    this->_upIsPressed = false;
+    this->_bIsPressed = false;
     this->_selectedJoystick = &joy2;
   }
 
-  void PlatformGameMode::switchTo() {
-    this->logger.log("switchTo");
-    this->_joy1->setAllPressed(false);
-    this->_joy2->setAllPressed(false);
+  void PlatformGameMode::setUpPressed(bool isPressed) {
+      this->_upIsPressed = isPressed;
+      if (isPressed || !this->_bIsPressed) {
+        this->_selectedJoystick->setUpPressed(isPressed);
+      }
   }
 
-  void PlatformGameMode::switchFrom() {
-    this->logger.log("switchFrom");
-    this->_selectedJoystick->setAllPressed(false);
+  void PlatformGameMode::setBButtonPressed(bool isPressed) {
+    this->_bIsPressed = isPressed;
+    if (isPressed || !this->_upIsPressed) {
+        this->_selectedJoystick->setUpPressed(isPressed);
+    }
+  }
+
+  void PlatformGameMode::switchTo(
+    bool isUpPressed, bool isDownPressed,
+    bool isLeftPressed, bool isRightPressed,
+    bool isAButtonPressed, bool isBButtonPressed
+  ) {
+    this->logger.log("switchTo");
+    this->setUpPressed(isUpPressed);
+    this->_selectedJoystick->setDownPressed(isDownPressed);
+    this->_selectedJoystick->setLeftPressed(isLeftPressed);
+    this->_selectedJoystick->setRightPressed(isRightPressed);
+    this->_selectedJoystick->setFirePressed(isAButtonPressed);
+    this->setBButtonPressed(isBButtonPressed);
   }
 
   void PlatformGameMode::joystickOutSelect() {
     if (this->_selectedJoystick == this->_joy1) {
+      logger.log("joystickOutSelect joy2");
+      this->_joy1->applyState(this->_joy2);
       this->_joy1->setAllPressed(false);
       this->_selectedJoystick = this->_joy2;
     } else {
+      logger.log("joystickOutSelect joy1");
+      this->_joy2->applyState(this->_joy1);
       this->_joy2->setAllPressed(false);
       this->_selectedJoystick = this->_joy1;
     }
@@ -33,7 +58,7 @@ namespace dankreek {
 
   void PlatformGameMode::up(bool isPressed) {
     this->logger.log("up isPressed=", isPressed);
-    this->_selectedJoystick->setUpPressed(isPressed);
+    this->setUpPressed(isPressed);
   }
 
   void PlatformGameMode::down(bool isPressed) {
@@ -58,6 +83,6 @@ namespace dankreek {
 
   void PlatformGameMode::bButton(bool isPressed) {
     this->logger.log("bButton isPressed=", isPressed);
-    this->_selectedJoystick->setUpPressed(isPressed);
+    this->setBButtonPressed(isPressed);
   }
 }

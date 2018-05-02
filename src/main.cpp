@@ -95,14 +95,27 @@ InputRouter inputRouter = InputRouter(
   platformMode
 );
 
+void onBoardLed(bool isOn) {
+  digitalWrite(LED_BUILTIN, isOn);
+}
+
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  onBoardLed(true);
+
   Logger::init();
-  // PwmLed::init();
-  // Pot::init();
+  PwmLed::init();
+  Pot::init();
+
+  // Send the initial state of each input to the router
+  // TODO: Rip all of this out
+  // joystickIn.init(inputRouter);
+  // fireButtonsIn.init(inputRouter);
+  // inputRouter.init();
 }
 
 void loop() {
-  modeSelectorsIn.update(inputRouter);
+  // modeSelectorsIn.update(inputRouter);
   joystickIn.update(inputRouter);
   fireButtonsIn.update(inputRouter);
 }

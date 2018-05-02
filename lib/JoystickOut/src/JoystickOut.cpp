@@ -77,4 +77,12 @@ void JoystickOut::setAllPressed(bool isPressed) {
   this->logger.logln("setAllPressed isPressed=", isPressed);
 }
 
+void JoystickOut::applyState(JoystickOut *other) {
+  other->setUpPressed(this->upButton->isPressed);
+  other->setDownPressed(this->downButton->isPressed);
+  other->setLeftPressed(this->leftButton->isPressed);
+  other->setRightPressed(this->rightButton->isPressed);
+  other->setFirePressed(this->fireButton->isPressed);
+}
+
 }

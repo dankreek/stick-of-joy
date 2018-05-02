@@ -7,10 +7,11 @@ namespace dankreek {
     IJoystickMode() {};
 
     // Called when the mode has been selected
-    virtual void switchTo() = 0;
-
-    // Called right before another mode was selected
-    virtual void switchFrom() {};
+    virtual void switchTo(
+      bool isUpPressed, bool isDownPressed,
+      bool isLeftPressed, bool isRightPressed,
+      bool isAButtonPressed, bool isBButtonPressed
+    ) = 0;
 
     // Joystick out toggle was pressed
     virtual void joystickOutSelect() = 0;

@@ -11,8 +11,11 @@ namespace dankreek {
   public:
     PlatformGameMode(JoystickOut &joy1, JoystickOut &joy2);
 
-    virtual void switchTo();
-    virtual void switchFrom();
+    virtual void switchTo(
+      bool isUpPressed, bool isDownPressed,
+      bool isLeftPressed, bool isRightPressed,
+      bool isAButtonPressed, bool isBButtonPressed
+    );
 
     virtual void joystickOutSelect();
 
@@ -27,6 +30,11 @@ namespace dankreek {
     Logger logger = Logger("PlatformGameMode");
     JoystickOut *_joy1, *_joy2;
     JoystickOut *_selectedJoystick;
+    bool _upIsPressed;
+    bool _bIsPressed;
+
+    void setUpPressed(bool isPressed);
+    void setBButtonPressed(bool isPressed);
   };
 }
 
