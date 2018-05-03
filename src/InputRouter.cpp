@@ -16,6 +16,7 @@ namespace dankreek {
     this->_platformGameMode = &platformGameMode;
     this->_selectedMode = &platformGameMode;
 
+    this->_selectedJoyOutPort = joyOutTwo;
     this->_upIsPressed = false;
     this->_downIsPressed = false;
     this->_leftIsPressed = false;
@@ -25,6 +26,12 @@ namespace dankreek {
   }
 
   void InputRouter::init() {
+    this->_selectedMode->switchTo(
+      this->_upIsPressed, this->_downIsPressed,
+      this->_leftIsPressed, this->_rightIsPressed,
+      this->_aButtonIsPressed, this->_bButtonIsPressed,
+      this->_selectedJoyOutPort
+    );
   }
 
   void InputRouter::up(bool isPressed) {
@@ -67,7 +74,7 @@ namespace dankreek {
 
   void InputRouter::outputSelectPressed() {
     this->logger.log("outputSelectPressed");
-    this->_selectedMode->joystickOutSelect();
+    this->_selectedJoyOutPort = this->_selectedMode->joystickOutToggle();
   }
 
   void InputRouter::selectMode(uint8_t modeSelected) {

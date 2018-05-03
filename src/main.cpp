@@ -46,8 +46,8 @@ DebouncedInputButton autoFireSelectB = DebouncedInputButton(20, MODE_DEBOUNCE);
 
 PwmLed autoFireALed = PwmLed(5);
 PwmLed autoFireBLed = PwmLed(6);
-PwmLed joy1SelectLed = PwmLed(7);
-PwmLed joy2SelectLed = PwmLed(8);
+PwmLed joy1SelectedLed = PwmLed(7);
+PwmLed joy2SelectedLed = PwmLed(8);
 
 Pot autoFireAPot = Pot(9);
 Pot autoFireBPot = Pot(8);
@@ -85,7 +85,10 @@ JoystickOut joystick2Out = JoystickOut(
  * Modes
  **/
 
-PlatformGameMode platformMode = PlatformGameMode(joystick1Out, joystick2Out);
+PlatformGameMode platformMode = PlatformGameMode(
+  joystick1Out, joystick2Out,
+  joy1SelectedLed, joy2SelectedLed
+);
 
 /*******************************************************************************
  * Input router
@@ -106,12 +109,7 @@ void setup() {
   Logger::init();
   PwmLed::init();
   Pot::init();
-
-  // Send the initial state of each input to the router
-  // TODO: Rip all of this out
-  // joystickIn.init(inputRouter);
-  // fireButtonsIn.init(inputRouter);
-  // inputRouter.init();
+  inputRouter.init();
 }
 
 void loop() {

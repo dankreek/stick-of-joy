@@ -31,12 +31,13 @@ namespace dankreek {
     Logger logger = Logger("InputRouter");
     JoystickOut* _joy1;
     JoystickOut* _joy2;
-    PlatformGameMode* _platformGameMode;
 
     bool _upIsPressed, _downIsPressed,
          _leftIsPressed, _rightIsPressed,
          _aButtonIsPressed, _bButtonIsPressed;
+    JoystickOutPort _selectedJoyOutPort;
 
+    PlatformGameMode* _platformGameMode;
     IJoystickMode* _selectedMode;
   };
 }

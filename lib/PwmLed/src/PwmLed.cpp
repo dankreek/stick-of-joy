@@ -4,8 +4,6 @@
 
 namespace dankreek {
 
-
-
   void PwmLed::init() {
     analogWriteResolution(ANALOG_WRITE_RESOLUTION);
   }

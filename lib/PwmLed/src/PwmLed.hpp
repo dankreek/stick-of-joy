@@ -17,7 +17,7 @@ protected:
     gradient, oscillating, stopped
   };
 
-  static const uint32_t DEFAULT_ANALOG_WRITE_RESOLUTION = 16;
+  static const uint32_t DEFAULT_ANALOG_WRITE_RESOLUTION = 8;
   // XXX: use ellapsedMicros for precision
   elapsedMicros _timer;
   uint8_t _pinNum;

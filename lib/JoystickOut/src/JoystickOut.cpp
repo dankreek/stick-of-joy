@@ -41,6 +41,7 @@ JoystickOut::JoystickOut(
   this->leftButton = &leftButton;
   this->rightButton = &rightButton;
   this->fireButton = &fireButton;
+  this->setAllPressed(false);
 }
 
 void JoystickOut::setUpPressed(bool isPressed) {
