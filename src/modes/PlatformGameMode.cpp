@@ -14,7 +14,7 @@ namespace dankreek {
     this->_joy1SelectedLed = &joy1SelectedLed;
     this->_joy2SelectedLed = &joy2SelectedLed;
     this->_upIsPressed = false;
-    this->_bIsPressed = false;
+    this->_aIsPressed = false;
 
     // Shouldn't matter, but set to avoid possible null pointer deref
     this->_selectedJoystick = &joy2;
@@ -40,19 +40,19 @@ namespace dankreek {
     this->_selectedJoystick->setDownPressed(isDownPressed);
     this->_selectedJoystick->setLeftPressed(isLeftPressed);
     this->_selectedJoystick->setRightPressed(isRightPressed);
-    this->_selectedJoystick->setFirePressed(isAButtonPressed);
-    this->setBButtonPressed(isBButtonPressed);
+    this->_selectedJoystick->setFirePressed(isBButtonPressed);
+    this->setAButtonPressed(isAButtonPressed);
   }
 
   void PlatformGameMode::setUpPressed(bool isPressed) {
       this->_upIsPressed = isPressed;
-      if (isPressed || !this->_bIsPressed) {
+      if (isPressed || !this->_aIsPressed) {
         this->_selectedJoystick->setUpPressed(isPressed);
       }
   }
 
-  void PlatformGameMode::setBButtonPressed(bool isPressed) {
-    this->_bIsPressed = isPressed;
+  void PlatformGameMode::setAButtonPressed(bool isPressed) {
+    this->_aIsPressed = isPressed;
     if (isPressed || !this->_upIsPressed) {
         this->_selectedJoystick->setUpPressed(isPressed);
     }
@@ -96,14 +96,14 @@ namespace dankreek {
     this->_selectedJoystick->setRightPressed(isPressed);
   }
 
-  void PlatformGameMode::aButton(bool isPressed) {
-    this->logger.log("aButton isPressed=", isPressed);
+  void PlatformGameMode::bButton(bool isPressed) {
+    this->logger.log("bButton isPressed=", isPressed);
     this->_selectedJoystick->setFirePressed(isPressed);
   }
 
-  void PlatformGameMode::bButton(bool isPressed) {
-    this->logger.log("bButton isPressed=", isPressed);
-    this->setBButtonPressed(isPressed);
+  void PlatformGameMode::aButton(bool isPressed) {
+    this->logger.log("aButton isPressed=", isPressed);
+    this->setAButtonPressed(isPressed);
   }
 
   void PlatformGameMode::setJoyOutLeds(JoystickOutPort joystickOutPort) {

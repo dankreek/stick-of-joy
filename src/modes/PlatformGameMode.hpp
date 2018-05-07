@@ -37,11 +37,11 @@ namespace dankreek {
     JoystickOut *_selectedJoystick;
     PwmLed *_joy1SelectedLed, *_joy2SelectedLed;
     bool _upIsPressed;
-    bool _bIsPressed;
+    bool _aIsPressed;
 
     void setJoyOutLeds(JoystickOutPort joystickOutPort);
     void setUpPressed(bool isPressed);
-    void setBButtonPressed(bool isPressed);
+    void setAButtonPressed(bool isPressed);
   };
 }
 
