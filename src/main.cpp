@@ -14,7 +14,7 @@
 
 #define STICK_DEBOUNCE 2
 #define FIRE_DEBOUNCE 2
-#define MODE_DEBOUNCE 2
+#define MODE_DEBOUNCE 3
 
 using namespace dankreek;
 
@@ -25,16 +25,16 @@ DebouncedInputButton right = DebouncedInputButton(1, STICK_DEBOUNCE);
 DebouncedInputButton a = DebouncedInputButton(10, FIRE_DEBOUNCE);
 DebouncedInputButton b = DebouncedInputButton(11, FIRE_DEBOUNCE);
 
-DebouncedInputButton mode1 = DebouncedInputButton(24, MODE_DEBOUNCE);
-DebouncedInputButton mode2 = DebouncedInputButton(25, MODE_DEBOUNCE);
-DebouncedInputButton mode3 = DebouncedInputButton(26, MODE_DEBOUNCE);
-DebouncedInputButton joyOutSelect = DebouncedInputButton(27, MODE_DEBOUNCE);
+DebouncedInputButton mode1 = DebouncedInputButton(29, MODE_DEBOUNCE);
+DebouncedInputButton mode2 = DebouncedInputButton(30, MODE_DEBOUNCE);
+DebouncedInputButton mode3 = DebouncedInputButton(31, MODE_DEBOUNCE);
+DebouncedInputButton joyOutSelect = DebouncedInputButton(32, MODE_DEBOUNCE);
 
-OutputButton joy1up = OutputButton(28);
-OutputButton joy1down = OutputButton(27);
-OutputButton joy1left = OutputButton(26);
-OutputButton joy1right = OutputButton(25);
-OutputButton joy1fire = OutputButton(24);
+OutputButton joy1up = OutputButton(18);
+OutputButton joy1down = OutputButton(17);
+OutputButton joy1left = OutputButton(16);
+OutputButton joy1right = OutputButton(15);
+OutputButton joy1fire = OutputButton(14);
 
 OutputButton joy2up = OutputButton(39);
 OutputButton joy2down = OutputButton(38);
@@ -113,7 +113,7 @@ void setup() {
 }
 
 void loop() {
-  // modeSelectorsIn.update(inputRouter);
+  modeSelectorsIn.update(inputRouter);
   joystickIn.update(inputRouter);
   fireButtonsIn.update(inputRouter);
 }

@@ -27,7 +27,9 @@ namespace dankreek {
     JoystickOutPort joystickOutPort
   ) {
     this->logger.log("switchTo");
+
     this->setJoyOutLeds(joystickOutPort);
+
     if (joystickOutPort == joyOutOne) {
       this->_selectedJoystick = this->_joy1;
     } else {

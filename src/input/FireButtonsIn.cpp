@@ -21,6 +21,33 @@ namespace dankreek {
     this->_autoFireBPot = &autoFireBPot;
     this->_autoFireSelectA = &autoFireSelectA;
     this->_autoFireSelectB = &autoFireSelectB;
+
+    // Do an update on the autofire select buttons so they can be read.
+    // This is required because the auto-fire select buttons are
+    // aren't momentary, so they could be on when the joystick is powered up.
+    this->_autoFireSelectA->update();
+    this->_autoFireSelectB->update();
+
+    this->updateAutoFireA(!this->_autoFireSelectA->read());
+    this->updateAutoFireB(!this->_autoFireSelectB->read());
+  }
+
+  void FireButtonsIn::updateAutoFireA(bool isSelected) {
+    if (isSelected) {
+      this->_autoFireALed->constant(0xff);
+    }
+    else {
+      this->_autoFireALed->constant(0x00);
+    }
+  }
+
+  void FireButtonsIn::updateAutoFireB(bool isSelected) {
+    if (isSelected) {
+      this->_autoFireBLed->constant(0xff);
+    }
+    else {
+      this->_autoFireBLed->constant(0x00);
+    }
   }
 
   void FireButtonsIn::update(InputRouter &router) {
@@ -30,6 +57,14 @@ namespace dankreek {
 
     if (this->_bButton->update()) {
       router.bButton(this->_bButton->fell());
+    }
+
+    if (this->_autoFireSelectA->update()) {
+      this->updateAutoFireA(!this->_autoFireSelectA->read());
+    }
+
+    if (this->_autoFireSelectB->update()) {
+      this->updateAutoFireB(!this->_autoFireSelectB->read());
     }
   }
 }

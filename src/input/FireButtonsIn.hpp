@@ -25,6 +25,11 @@ namespace dankreek {
     IInputButton *_autoFireSelectA, *_autoFireSelectB;
     Pot *_autoFireAPot, *_autoFireBPot;
     PwmLed *_autoFireALed, *_autoFireBLed;
+    bool _isAutoFireAOn, _isAutoFireBOn;
+
+    // Read the auto fire buttons and update the autofire state
+    void updateAutoFireA(bool isSelected);
+    void updateAutoFireB(bool isSelected);
   };
 }
 

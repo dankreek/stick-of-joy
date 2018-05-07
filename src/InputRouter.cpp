@@ -78,6 +78,6 @@ namespace dankreek {
   }
 
   void InputRouter::selectMode(uint8_t modeSelected) {
-    this->logger.logln("selectMode");
+    this->logger.logln("selectMode", modeSelected);
   }
 }
