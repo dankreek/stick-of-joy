@@ -98,18 +98,18 @@ InputRouter inputRouter = InputRouter(
   platformMode
 );
 
-void onBoardLed(bool isOn) {
-  digitalWrite(LED_BUILTIN, isOn);
-}
-
 void setup() {
+  // Use built-in LED to signal that the setup has begun and ended.
   pinMode(LED_BUILTIN, OUTPUT);
-  onBoardLed(true);
+  digitalWrite(LED_BUILTIN, HIGH);
 
   Logger::init();
   PwmLed::init();
   Pot::init();
   inputRouter.init();
+
+  // Setup is finished, turn off built-in LED
+  digitalWrite(LED_BUILTIN, LOW);
 }
 
 void loop() {
