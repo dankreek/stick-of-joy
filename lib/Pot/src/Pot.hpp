@@ -15,13 +15,20 @@ public:
 
   Pot(uint8_t potPin);
 
+  // Read the current value of the pot and return `true` if the value has
+  // changed since the last update.
+  bool update();
+
   // Read the current value of the potentiometer
   // Returns a value between 0 and 2^ANALOG_READ_RESOLUTION
-  uint16_t value();
+  int read();
 
 protected:
   uint8_t _potPin;
+  int _lastValue;
+  int _curValue;
 };
+
 }
 
 #endif

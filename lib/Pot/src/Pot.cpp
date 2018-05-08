@@ -10,9 +10,18 @@ namespace dankreek {
 
   Pot::Pot(uint8_t potPin) {
     this->_potPin = potPin;
+    _curValue = analogRead(this->_potPin);
+    _lastValue = _curValue;
   }
 
-  uint16_t Pot::value() {
-    return analogRead(this->_potPin);
+
+  bool Pot::update() {
+    _lastValue = _curValue;
+    _curValue = analogRead(this->_potPin);
+    return _lastValue != _curValue;
+  }
+
+  int Pot::read() {
+    return this->_curValue;
   }
 }
