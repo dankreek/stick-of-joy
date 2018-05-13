@@ -1,5 +1,5 @@
-#ifndef PLATFORM_GAME_MODE_H
-#define PLATFORM_GAME_MODE_H
+#ifndef SINGLE_BUTTON_MODE_H
+#define SINGLE_BUTTON_MODE_H
 
 #include <JoystickOut.hpp>
 #include <Logger.hpp>
@@ -7,10 +7,10 @@
 #include "IJoystickMode.hpp"
 
 namespace dankreek {
-  // Mode which routes the A button to UP
-  class PlatformGameMode : public IJoystickMode {
+  // Mode which routes the A and B buttons to fire
+  class SingleButtonMode : public IJoystickMode {
   public:
-    PlatformGameMode(
+    SingleButtonMode(
       JoystickOut &joy1, JoystickOut &joy2,
       PwmLed &joy1SelectedLed, PwmLed &joy2SelectedLed
     );
@@ -32,16 +32,16 @@ namespace dankreek {
     virtual void bButton(bool isPressed);
 
   protected:
-    Logger logger = Logger("PlatformGameMode");
+    Logger logger = Logger("SingleButtonMode");
     JoystickOut *_joy1, *_joy2;
     JoystickOut *_selectedJoystick;
     PwmLed *_joy1SelectedLed, *_joy2SelectedLed;
-    bool _upIsPressed;
     bool _aIsPressed;
+    bool _bIsPressed;
 
     void setJoyOutLeds(JoystickOutPort joystickOutPort);
-    void setUpPressed(bool isPressed);
     void setAButtonPressed(bool isPressed);
+    void setBButtonPressed(bool isPressed);
   };
 }
 

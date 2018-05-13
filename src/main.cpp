@@ -10,6 +10,7 @@
 #include "input/FireButtonsIn.hpp"
 #include "input/ModeSelectorsIn.hpp"
 #include "modes/PlatformGameMode.hpp"
+#include "modes/SingleButtonMode.hpp"
 #include "InputRouter.hpp"
 
 #define STICK_DEBOUNCE 2
@@ -85,17 +86,23 @@ JoystickOut joystick2Out = JoystickOut(
  * Modes
  **/
 
-PlatformGameMode platformMode = PlatformGameMode(
+PlatformGameMode platformGameMode = PlatformGameMode(
   joystick1Out, joystick2Out,
   joy1SelectedLed, joy2SelectedLed
 );
+
+SingleButtonMode singleButtonMode = SingleButtonMode(
+  joystick1Out, joystick2Out,
+  joy1SelectedLed, joy2SelectedLed
+);
+
 
 /*******************************************************************************
  * Input router
  **/
 InputRouter inputRouter = InputRouter(
   joystick1Out, joystick2Out,
-  platformMode
+  platformGameMode, singleButtonMode
 );
 
 void setup() {

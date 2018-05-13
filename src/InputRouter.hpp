@@ -5,13 +5,15 @@
 #include <JoystickOut.hpp>
 #include "modes/IJoystickMode.hpp"
 #include "modes/PlatformGameMode.hpp"
+#include "modes/SingleButtonMode.hpp"
 
 namespace dankreek {
   class InputRouter {
   public:
     InputRouter(
       JoystickOut &joystick1Out, JoystickOut &joystick2Out,
-      PlatformGameMode &platformGameMode
+      PlatformGameMode &platformGameMode,
+      SingleButtonMode &singleButtonMode
     );
 
     void init();
@@ -38,6 +40,7 @@ namespace dankreek {
     JoystickOutPort _selectedJoyOutPort;
 
     PlatformGameMode* _platformGameMode;
+    SingleButtonMode* _singleButtonMode;
     IJoystickMode* _selectedMode;
   };
 }

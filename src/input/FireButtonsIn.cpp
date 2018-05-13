@@ -66,5 +66,13 @@ namespace dankreek {
     if (this->_autoFireSelectB->update()) {
       this->updateAutoFireB(!this->_autoFireSelectB->read());
     }
+
+    if (this->_autoFireAPot->update()) {
+      // TODO: Add logging then functionality
+    }
+
+    if (this->_autoFireBPot->update()) {
+
+    }
   }
 }
