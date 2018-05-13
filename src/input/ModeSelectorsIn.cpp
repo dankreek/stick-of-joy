@@ -1,8 +1,10 @@
+#include "modes/IJoystickMode.hpp"
 #include "ModeSelectorsIn.hpp"
 #include "InputRouter.hpp"
 #include "IInputButton.hpp"
 
 namespace dankreek {
+
   ModeSelectorsIn::ModeSelectorsIn(
     IInputButton &mode1,
     IInputButton &mode2,
@@ -17,15 +19,15 @@ namespace dankreek {
 
   void ModeSelectorsIn::update(InputRouter &inputRouter) {
     if (this->_mode1->update() && this->_mode1->fell()) {
-        inputRouter.selectMode(1);
+        inputRouter.selectMode(IJoystickMode::singleFire);
     }
 
     if (this->_mode2->update() && this->_mode2->fell()) {
-      inputRouter.selectMode(2);
+      inputRouter.selectMode(IJoystickMode::platform);
     }
 
     if (this->_mode3->update() && this->_mode3->fell()) {
-      inputRouter.selectMode(3);
+      inputRouter.selectMode(IJoystickMode::dualPort);
     }
 
     if (this->_outputSelect->update() && this->_outputSelect->fell()) {

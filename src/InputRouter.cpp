@@ -5,17 +5,20 @@
 #include "modes/IJoystickMode.hpp"
 #include "modes/PlatformGameMode.hpp"
 #include "modes/SingleButtonMode.hpp"
+#include "modes/DualOutMode.hpp"
 
 namespace dankreek {
   InputRouter::InputRouter(
     JoystickOut &joystick1Out, JoystickOut &joystick2Out,
     PlatformGameMode &platformGameMode,
-    SingleButtonMode &singleButtonMode
+    SingleButtonMode &singleButtonMode,
+    DualOutMode &dualOutMode
   ) {
     this->_joy1 = &joystick1Out;
     this->_joy2 = &joystick2Out;
     this->_platformGameMode = &platformGameMode;
     this->_singleButtonMode = &singleButtonMode;
+    this->_dualOutMode = &dualOutMode;
 
     // Default mode
     this->_selectedMode = &platformGameMode;
@@ -81,16 +84,22 @@ namespace dankreek {
     this->_selectedJoyOutPort = this->_selectedMode->joystickOutToggle();
   }
 
-  void InputRouter::selectMode(uint8_t modeSelected) {
-    this->logger.log("selectMode", modeSelected);
+  void InputRouter::selectMode(IJoystickMode::SelectedMode selectedMode) {
+    switch (selectedMode) {
+      case IJoystickMode::singleFire:
+        this->logger.logln("selectMode: singleFire");
+        this->_selectedMode = this->_singleButtonMode;
+        break;
 
-    if (this->_selectedMode == this->_platformGameMode) {
-      this->logger.logln(": singleButtonMode");
-      this->_selectedMode = this->_singleButtonMode;
-    }
-    else {
-      this->logger.logln(": platformGameMode");
-      this->_selectedMode = this->_platformGameMode;
+      case IJoystickMode::platform:
+        this->logger.logln("selectMode: platform");
+        this->_selectedMode = this->_platformGameMode;
+        break;
+
+      case IJoystickMode::dualPort:
+        this->logger.logln("selectMode: dualPort");
+        this->_selectedMode = this->_dualOutMode;
+        break;
     }
 
     this->_selectedMode->switchTo(

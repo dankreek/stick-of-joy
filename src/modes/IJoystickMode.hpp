@@ -8,6 +8,12 @@ namespace dankreek {
 
   class IJoystickMode {
   public:
+    enum SelectedMode {
+      singleFire,
+      platform,
+      dualPort
+    };
+
     IJoystickMode() {};
 
     // Called when the mode has been selected

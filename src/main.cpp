@@ -11,6 +11,7 @@
 #include "input/ModeSelectorsIn.hpp"
 #include "modes/PlatformGameMode.hpp"
 #include "modes/SingleButtonMode.hpp"
+#include "modes/DualOutMode.hpp"
 #include "InputRouter.hpp"
 
 #define STICK_DEBOUNCE 2
@@ -96,13 +97,19 @@ SingleButtonMode singleButtonMode = SingleButtonMode(
   joy1SelectedLed, joy2SelectedLed
 );
 
+DualOutMode dualOutMode = DualOutMode(
+  joystick1Out, joystick2Out,
+  joy1SelectedLed, joy2SelectedLed
+);
+
 
 /*******************************************************************************
  * Input router
  **/
+
 InputRouter inputRouter = InputRouter(
   joystick1Out, joystick2Out,
-  platformGameMode, singleButtonMode
+  platformGameMode, singleButtonMode, dualOutMode
 );
 
 void setup() {

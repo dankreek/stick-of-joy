@@ -26,7 +26,7 @@ namespace dankreek {
     bool isAButtonPressed, bool isBButtonPressed,
     JoystickOutPort joystickOutPort
   ) {
-    this->logger.log("switchTo");
+    this->logger.logln("switchTo");
 
     this->setJoyOutLeds(joystickOutPort);
 
