@@ -4,8 +4,8 @@
 namespace dankreek {
 
   void Pot::init() {
-    analogReadResolution(ANALOG_READ_RESOLUTION);
     analogReadAveraging(ANALOG_READ_AVERAGING_NUM_SAMPLES);
+    analogReadResolution(ANALOG_READ_RESOLUTION);
   }
 
   Pot::Pot(uint8_t potPin) {

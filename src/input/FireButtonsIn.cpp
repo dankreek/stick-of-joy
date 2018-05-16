@@ -11,7 +11,6 @@ namespace dankreek {
     PwmLed &autoFireALed, PwmLed &autoFireBLed,
     Pot &autoFireAPot, Pot &autoFireBPot,
     IInputButton &autoFireSelectA, IInputButton &autoFireSelectB
-
   ) {
     this->_aButton = &aButton;
     this->_bButton = &bButton;
@@ -68,11 +67,11 @@ namespace dankreek {
     }
 
     if (this->_autoFireAPot->update()) {
-      // TODO: Add logging then functionality
+      this->logger.logln("Autofire A Pot=", this->_autoFireAPot->read());
     }
 
     if (this->_autoFireBPot->update()) {
-
+      this->logger.logln("Autofire B Pot=", this->_autoFireBPot->read());
     }
   }
 }

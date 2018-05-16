@@ -1,6 +1,7 @@
 #ifndef FIRE_BUTTONS_IN_H
 #define FIRE_BUTTONS_IN_H
 
+#include <Logger.hpp>
 #include <IInputButton.hpp>
 #include <Pot.hpp>
 #include <PwmLed.hpp>
@@ -21,6 +22,8 @@ namespace dankreek {
     virtual void update(InputRouter &inputRouter);
 
   protected:
+    Logger logger = Logger("FireButtonsIn");
+
     IInputButton *_aButton, *_bButton;
     IInputButton *_autoFireSelectA, *_autoFireSelectB;
     Pot *_autoFireAPot, *_autoFireBPot;

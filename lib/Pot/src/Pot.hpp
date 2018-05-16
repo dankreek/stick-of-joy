@@ -7,8 +7,8 @@ namespace dankreek {
 
 class Pot {
 public:
-  static const unsigned int ANALOG_READ_RESOLUTION = 10;
-  static const unsigned int ANALOG_READ_AVERAGING_NUM_SAMPLES = 16;
+  static const unsigned int ANALOG_READ_RESOLUTION = 16;
+  static const unsigned int ANALOG_READ_AVERAGING_NUM_SAMPLES = 32;
 
   // Initialize the Teensy's analog input functionality
   static void init();
