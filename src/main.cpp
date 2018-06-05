@@ -27,10 +27,10 @@ DebouncedInputButton right = DebouncedInputButton(1, STICK_DEBOUNCE);
 DebouncedInputButton a = DebouncedInputButton(10, FIRE_DEBOUNCE);
 DebouncedInputButton b = DebouncedInputButton(11, FIRE_DEBOUNCE);
 
-DebouncedInputButton mode1 = DebouncedInputButton(29, MODE_DEBOUNCE);
-DebouncedInputButton mode2 = DebouncedInputButton(30, MODE_DEBOUNCE);
-DebouncedInputButton mode3 = DebouncedInputButton(31, MODE_DEBOUNCE);
-DebouncedInputButton joyOutSelect = DebouncedInputButton(32, MODE_DEBOUNCE);
+DebouncedInputButton mode1 = DebouncedInputButton(24, MODE_DEBOUNCE);
+DebouncedInputButton mode2 = DebouncedInputButton(25, MODE_DEBOUNCE);
+DebouncedInputButton mode3 = DebouncedInputButton(26, MODE_DEBOUNCE);
+DebouncedInputButton joyOutSelect = DebouncedInputButton(27, MODE_DEBOUNCE);
 
 OutputButton joy1up = OutputButton(18);
 OutputButton joy1down = OutputButton(17);
@@ -43,16 +43,17 @@ OutputButton joy2down = OutputButton(38);
 OutputButton joy2left = OutputButton(37);
 OutputButton joy2right = OutputButton(36);
 OutputButton joy2fire = OutputButton(35);
-DebouncedInputButton autoFireSelectA = DebouncedInputButton(21, MODE_DEBOUNCE);
-DebouncedInputButton autoFireSelectB = DebouncedInputButton(20, MODE_DEBOUNCE);
+
+DebouncedInputButton autoFireSelectA = DebouncedInputButton(29, MODE_DEBOUNCE);
+DebouncedInputButton autoFireSelectB = DebouncedInputButton(30, MODE_DEBOUNCE);
 
 PwmLed autoFireALed = PwmLed(5);
 PwmLed autoFireBLed = PwmLed(6);
 PwmLed joy1SelectedLed = PwmLed(7);
 PwmLed joy2SelectedLed = PwmLed(8);
 
-Pot autoFireAPot = Pot(9);
-Pot autoFireBPot = Pot(8);
+Pot autoFireAPot = Pot(12);
+Pot autoFireBPot = Pot(13);
 
 /*******************************************************************************
  * Input modules
