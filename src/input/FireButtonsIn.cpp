@@ -33,19 +33,19 @@ namespace dankreek {
 
   void FireButtonsIn::updateAutoFireA(bool isSelected) {
     if (isSelected) {
-      this->_autoFireALed->constant(0xff);
+      this->_autoFireALed->setBrightness(0x18);
     }
     else {
-      this->_autoFireALed->constant(0x00);
+      this->_autoFireALed->setBrightness(0x00);
     }
   }
 
   void FireButtonsIn::updateAutoFireB(bool isSelected) {
     if (isSelected) {
-      this->_autoFireBLed->constant(0xff);
+      this->_autoFireBLed->setBrightness(0x18);
     }
     else {
-      this->_autoFireBLed->constant(0x00);
+      this->_autoFireBLed->setBrightness(0x00);
     }
   }
 
