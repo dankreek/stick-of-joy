@@ -107,11 +107,11 @@ namespace dankreek {
 
   void SingleButtonMode::setJoyOutLeds(JoystickOutPort joystickOutPort) {
     if (joystickOutPort == joyOutOne) {
-      this->_joy1SelectedLed->constant(0xff);
-      this->_joy2SelectedLed->constant(0x00);
+      this->_joy1SelectedLed->setBrightness(0x10);
+      this->_joy2SelectedLed->setBrightness(0x00);
     } else {
-      this->_joy1SelectedLed->constant(0x00);
-      this->_joy2SelectedLed->constant(0xff);
+      this->_joy1SelectedLed->setBrightness(0x00);
+      this->_joy2SelectedLed->setBrightness(0x10);
     }
   }
 }

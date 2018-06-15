@@ -28,8 +28,8 @@ namespace dankreek {
     this->_prevModeJoyOut = joystickOutPort;
 
     // set both joy out LEDs
-    this->_joy1SelectedLed->constant(0xff);
-    this->_joy2SelectedLed->constant(0xff);
+    this->_joy1SelectedLed->setBrightness(0x10);
+    this->_joy2SelectedLed->setBrightness(0x10);
 
     this->_joy2->setUpPressed(isUpPressed);
     this->_joy2->setDownPressed(isDownPressed);
