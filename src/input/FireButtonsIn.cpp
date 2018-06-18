@@ -33,23 +33,26 @@ namespace dankreek {
 
   void FireButtonsIn::updateAutoFireA(bool isSelected) {
     if (isSelected) {
-      this->_autoFireALed->setBrightness(0x18);
+      this->_autoFireALed->softOn(ledOnTimeMs);
     }
     else {
-      this->_autoFireALed->setBrightness(0x00);
+      this->_autoFireALed->softOff(ledOffTimeMs);
     }
   }
 
   void FireButtonsIn::updateAutoFireB(bool isSelected) {
     if (isSelected) {
-      this->_autoFireBLed->setBrightness(0x18);
+      this->_autoFireBLed->softOn(ledOnTimeMs);
     }
     else {
-      this->_autoFireBLed->setBrightness(0x00);
+      this->_autoFireBLed->softOff(ledOffTimeMs);
     }
   }
 
   void FireButtonsIn::update(InputRouter &router) {
+    this->_autoFireALed->update();
+    this->_autoFireBLed->update();
+
     if (this->_aButton->update()) {
       router.aButton(this->_aButton->fell());
     }

@@ -28,8 +28,10 @@ namespace dankreek {
     this->_prevModeJoyOut = joystickOutPort;
 
     // set both joy out LEDs
-    this->_joy1SelectedLed->setBrightness(0x10);
-    this->_joy2SelectedLed->setBrightness(0x10);
+    this->_joy1SelectedLed->hardOff();
+    this->_joy2SelectedLed->hardOff();
+    this->_joy1SelectedLed->softOn(ledOnTimeMs);
+    this->_joy2SelectedLed->softOn(ledOnTimeMs);
 
     this->_joy2->setUpPressed(isUpPressed);
     this->_joy2->setDownPressed(isDownPressed);
@@ -70,8 +72,10 @@ namespace dankreek {
   }
 
   JoystickOutPort DualOutMode::joystickOutToggle() {
-    // TODO: Flash the LEDs to indicate that the joy out port can't be toggled
-    //       in this mode
+    this->_joy1SelectedLed->hardOff();
+    this->_joy2SelectedLed->hardOff();
+    this->_joy1SelectedLed->softOn(ledOnTimeMs);
+    this->_joy2SelectedLed->softOn(ledOnTimeMs);
 
     // Return the output port that was selected while using the previous mode
     return this->_prevModeJoyOut;

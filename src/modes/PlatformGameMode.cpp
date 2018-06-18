@@ -28,6 +28,8 @@ namespace dankreek {
   ) {
     this->logger.logln("switchTo");
 
+    this->_joy1SelectedLed->hardOff();
+    this->_joy2SelectedLed->hardOff();
     this->setJoyOutLeds(joystickOutPort);
 
     if (joystickOutPort == joyOutOne) {
@@ -108,11 +110,11 @@ namespace dankreek {
 
   void PlatformGameMode::setJoyOutLeds(JoystickOutPort joystickOutPort) {
     if (joystickOutPort == joyOutOne) {
-      this->_joy1SelectedLed->setBrightness(0x10);
-      this->_joy2SelectedLed->setBrightness(0x00);
+      this->_joy1SelectedLed->softOn(ledOnTimeMs);
+      this->_joy2SelectedLed->softOff(ledOffTimeMs);
     } else {
-      this->_joy1SelectedLed->setBrightness(0x00);
-      this->_joy2SelectedLed->setBrightness(0x10);
+      this->_joy1SelectedLed->softOff(ledOffTimeMs);
+      this->_joy2SelectedLed->softOn(ledOnTimeMs);
     }
   }
 }

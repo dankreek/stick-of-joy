@@ -22,6 +22,8 @@ namespace dankreek {
     virtual void update(InputRouter &inputRouter);
 
   protected:
+    const uint16_t ledOnTimeMs = 50;
+    const uint16_t ledOffTimeMs = 180;
     Logger logger = Logger("FireButtonsIn");
 
     IInputButton *_aButton, *_bButton;

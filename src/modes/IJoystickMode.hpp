@@ -1,6 +1,8 @@
 #ifndef I_JOYSTICK_MODE_H
 #define I_JOYSTICK_MODE_H
 
+#include <Arduino.h>
+
 namespace dankreek {
   enum JoystickOutPort {
     joyOutOne, joyOutTwo
@@ -34,6 +36,10 @@ namespace dankreek {
     virtual void right(bool isPressed) = 0;
     virtual void aButton(bool isPressed) = 0;
     virtual void bButton(bool isPressed) = 0;
+
+  protected:
+    const uint16_t ledOnTimeMs = 640;
+    const uint16_t ledOffTimeMs = 200;
   };
 }
 

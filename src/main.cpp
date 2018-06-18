@@ -47,10 +47,10 @@ OutputButton joy2fire = OutputButton(35);
 DebouncedInputButton autoFireSelectA = DebouncedInputButton(29, MODE_DEBOUNCE);
 DebouncedInputButton autoFireSelectB = DebouncedInputButton(30, MODE_DEBOUNCE);
 
-PwmLed autoFireALed = PwmLed(5);
-PwmLed autoFireBLed = PwmLed(6);
-PwmLed joy1SelectedLed = PwmLed(7);
-PwmLed joy2SelectedLed = PwmLed(8);
+PwmLed autoFireALed = PwmLed(5, 0x18);
+PwmLed autoFireBLed = PwmLed(6, 0x18);
+PwmLed joy1SelectedLed = PwmLed(7, 0x18);
+PwmLed joy2SelectedLed = PwmLed(8, 0x18);
 
 Pot autoFireAPot = Pot(12);
 Pot autoFireBPot = Pot(13);
@@ -131,4 +131,7 @@ void loop() {
   modeSelectorsIn.update(inputRouter);
   joystickIn.update(inputRouter);
   fireButtonsIn.update(inputRouter);
+
+  joy1SelectedLed.update();
+  joy2SelectedLed.update();
 }
