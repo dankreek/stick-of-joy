@@ -24,6 +24,8 @@ public:
   int read();
 
 protected:
+  uint16_t readPot();
+  
   uint8_t _potPin;
   int _lastValue;
   int _curValue;

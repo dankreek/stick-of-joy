@@ -70,11 +70,11 @@ namespace dankreek {
     }
 
     if (this->_autoFireAPot->update()) {
-      // this->logger.logln("Autofire A Pot=", this->_autoFireAPot->read());
+      this->logger.logln("Autofire A Pot=", this->_autoFireAPot->read());
     }
 
     if (this->_autoFireBPot->update()) {
-      // this->logger.logln("Autofire B Pot=", this->_autoFireBPot->read());
+      this->logger.logln("Autofire B Pot=", this->_autoFireBPot->read());
     }
   }
 }
