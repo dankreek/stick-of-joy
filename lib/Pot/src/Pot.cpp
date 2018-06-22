@@ -14,7 +14,6 @@ namespace dankreek {
     _lastValue = _curValue;
   }
 
-
   bool Pot::update() {
     _lastValue = _curValue;
     _curValue = this->readPot();

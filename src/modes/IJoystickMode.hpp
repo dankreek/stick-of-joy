@@ -38,8 +38,8 @@ namespace dankreek {
     virtual void bButton(bool isPressed) = 0;
 
   protected:
-    const uint16_t ledOnTimeMs = 640;
-    const uint16_t ledOffTimeMs = 200;
+    const uint16_t ledOnTimeMs = 50;
+    const uint16_t ledOffTimeMs = 180;
   };
 }
 

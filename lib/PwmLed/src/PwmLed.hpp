@@ -10,7 +10,7 @@ namespace dankreek {
     typedef uint16_t ledBrightness;
 
   public:
-    static const uint32_t ANALOG_WRITE_RESOLUTION = 8;
+    static const uint32_t ANALOG_WRITE_RESOLUTION = 10; 
 
     // Initialize the Teensy's PWM output functionality
     static void init();
@@ -43,7 +43,7 @@ namespace dankreek {
     ledBrightness _maxBrightness;
     elapsedMicros _timeSinceLastStep;
     bool _isTransitionIncreasing;
-    
+
     // The number of microseconds until the next step in brightness
     unsigned long _nextStepTime_us;
 
