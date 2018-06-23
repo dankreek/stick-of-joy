@@ -42,7 +42,7 @@ namespace dankreek {
   }
 
   void InputRouter::up(bool isPressed) {
-    this->logger.log("up isPressed=", isPressed);
+    this->logger.logln("up isPressed=", isPressed);
     this->_upIsPressed = isPressed;
     if (this->_selectedMode != NULL) {
       this->_selectedMode->up(isPressed);
@@ -50,37 +50,37 @@ namespace dankreek {
   }
 
   void InputRouter::down(bool isPressed) {
-    this->logger.log("down isPressed=", isPressed);
+    this->logger.logln("down isPressed=", isPressed);
     this->_downIsPressed = isPressed;
     this->_selectedMode->down(isPressed);
   }
 
   void InputRouter::left(bool isPressed) {
-    this->logger.log("left isPressed=", isPressed);
+    this->logger.logln("left isPressed=", isPressed);
     this->_leftIsPressed = isPressed;
     this->_selectedMode->left(isPressed);
   }
 
   void InputRouter::right(bool isPressed) {
-    this->logger.log("right isPressed=", isPressed);
+    this->logger.logln("right isPressed=", isPressed);
     this->_rightIsPressed = isPressed;
     this->_selectedMode->right(isPressed);
   }
 
   void InputRouter::aButton(bool isPressed) {
-    this->logger.log("aButton isPressed=", isPressed);
+    this->logger.logln("aButton isPressed=", isPressed);
     this->_aButtonIsPressed = isPressed;
     this->_selectedMode->aButton(isPressed);
   }
 
   void InputRouter::bButton(bool isPressed) {
-    this->logger.log("bButton isPressed=", isPressed);
+    this->logger.logln("bButton isPressed=", isPressed);
     this->_bButtonIsPressed = isPressed;
     this->_selectedMode->bButton(isPressed);
   }
 
   void InputRouter::outputSelectPressed() {
-    this->logger.log("outputSelectPressed");
+    this->logger.logln("outputSelectPressed");
     this->_selectedJoyOutPort = this->_selectedMode->joystickOutToggle();
   }
 

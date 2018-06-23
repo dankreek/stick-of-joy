@@ -62,14 +62,14 @@ namespace dankreek {
 
   JoystickOutPort PlatformGameMode::joystickOutToggle() {
     if (this->_selectedJoystick == this->_joy1) {
-      logger.log("joystickOutSelect joy2");
+      logger.logln("joystickOutSelect joy2");
       this->_joy1->applyState(this->_joy2);
       this->_joy1->setAllPressed(false);
       this->_selectedJoystick = this->_joy2;
       this->setJoyOutLeds(joyOutTwo);
       return joyOutTwo;
     } else {
-      logger.log("joystickOutSelect joy1");
+      logger.logln("joystickOutSelect joy1");
       this->_joy2->applyState(this->_joy1);
       this->_joy2->setAllPressed(false);
       this->_selectedJoystick = this->_joy1;
@@ -79,32 +79,32 @@ namespace dankreek {
   }
 
   void PlatformGameMode::up(bool isPressed) {
-    this->logger.log("up isPressed=", isPressed);
+    this->logger.logln("up isPressed=", isPressed);
     this->setUpPressed(isPressed);
   }
 
   void PlatformGameMode::down(bool isPressed) {
-    this->logger.log("down isPressed=", isPressed);
+    this->logger.logln("down isPressed=", isPressed);
     this->_selectedJoystick->setDownPressed(isPressed);
   }
 
   void PlatformGameMode::left(bool isPressed) {
-    this->logger.log("left isPressed=", isPressed);
+    this->logger.logln("left isPressed=", isPressed);
     this->_selectedJoystick->setLeftPressed(isPressed);
   }
 
   void PlatformGameMode::right(bool isPressed) {
-    this->logger.log("right isPresed=", isPressed);
+    this->logger.logln("right isPresed=", isPressed);
     this->_selectedJoystick->setRightPressed(isPressed);
   }
 
   void PlatformGameMode::bButton(bool isPressed) {
-    this->logger.log("bButton isPressed=", isPressed);
+    this->logger.logln("bButton isPressed=", isPressed);
     this->_selectedJoystick->setFirePressed(isPressed);
   }
 
   void PlatformGameMode::aButton(bool isPressed) {
-    this->logger.log("aButton isPressed=", isPressed);
+    this->logger.logln("aButton isPressed=", isPressed);
     this->setAButtonPressed(isPressed);
   }
 

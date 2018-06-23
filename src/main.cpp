@@ -7,6 +7,7 @@
 #include <DebouncedInputButton.hpp>
 #include <Logger.hpp>
 #include "input/JoystickIn.hpp"
+#include "input/AutoFireButtonIn.hpp"
 #include "input/FireButtonsIn.hpp"
 #include "input/ModeSelectorsIn.hpp"
 #include "modes/PlatformGameMode.hpp"
@@ -55,18 +56,21 @@ PwmLed joy2SelectedLed = PwmLed(8, 0x60);
 Pot autoFireAPot = Pot(12);
 Pot autoFireBPot = Pot(13);
 
+AutoFireButtonIn autoFireA = AutoFireButtonIn(
+  a, autoFireALed, autoFireAPot, autoFireSelectA, "AutoFireButtonIn:A"
+);
+
+AutoFireButtonIn autoFireB = AutoFireButtonIn(
+  b, autoFireBLed, autoFireBPot, autoFireSelectB, "AutoFireButtonIn:B"
+);
+
 /*******************************************************************************
  * Input modules
  **/
 
 JoystickIn joystickIn = JoystickIn(up, down, left, right);
 
-FireButtonsIn fireButtonsIn = FireButtonsIn(
-  a, b,
-  autoFireALed, autoFireBLed,
-  autoFireAPot, autoFireBPot,
-  autoFireSelectA, autoFireSelectB
-);
+FireButtonsIn fireButtonsIn = FireButtonsIn(autoFireA, autoFireB);
 
 ModeSelectorsIn modeSelectorsIn = ModeSelectorsIn(
   mode1, mode2, mode3, joyOutSelect
@@ -132,6 +136,8 @@ void loop() {
   joystickIn.update(inputRouter);
   fireButtonsIn.update(inputRouter);
 
+  // This seems a little out of place, but updating the joy select LED's
+  // outside of the mode classes is DRYer
   joy1SelectedLed.update();
   joy2SelectedLed.update();
 }
