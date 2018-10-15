@@ -4,21 +4,11 @@
 #include <Logger.hpp>
 #include <JoystickOut.hpp>
 #include "modes/IJoystickMode.hpp"
-#include "modes/PlatformGameMode.hpp"
-#include "modes/SingleButtonMode.hpp"
-#include "modes/DualOutMode.hpp"
 
 namespace dankreek {
   class InputRouter {
   public:
-    InputRouter(
-      JoystickOut &joystick1Out, JoystickOut &joystick2Out,
-      PlatformGameMode &platformGameMode,
-      SingleButtonMode &singleButtonMode,
-      DualOutMode &dualOutMode
-    );
-
-    void init();
+    InputRouter(JoystickOut &joystick1Out, JoystickOut &joystick2Out);
 
     void up(bool isPressed);
     void down(bool isPressed);
@@ -28,7 +18,7 @@ namespace dankreek {
     void aButton(bool isPressed);
     void bButton(bool isPressed);
 
-    void selectMode(IJoystickMode::SelectedMode selectedMode);
+    void selectMode(IJoystickMode* selectedMode);
     void outputSelectPressed();
 
   private:
@@ -39,11 +29,8 @@ namespace dankreek {
     bool _upIsPressed, _downIsPressed,
          _leftIsPressed, _rightIsPressed,
          _aButtonIsPressed, _bButtonIsPressed;
-    JoystickOutPort _selectedJoyOutPort;
 
-    PlatformGameMode* _platformGameMode;
-    SingleButtonMode* _singleButtonMode;
-    DualOutMode* _dualOutMode;
+    JoystickOutPort _selectedJoyOutPort;
     IJoystickMode* _selectedMode;
   };
 }
