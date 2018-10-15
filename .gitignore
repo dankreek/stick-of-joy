@@ -7,3 +7,4 @@
 .vscode/launch.json
 board/*.b#*
 board/*.s#*
+*.job
