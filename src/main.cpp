@@ -48,10 +48,10 @@ OutputButton joy2fire = OutputButton(35);
 DebouncedInputButton autoFireSelectA = DebouncedInputButton(29, MODE_DEBOUNCE);
 DebouncedInputButton autoFireSelectB = DebouncedInputButton(30, MODE_DEBOUNCE);
 
-PwmLed autoFireALed = PwmLed(5, 0x60);
-PwmLed autoFireBLed = PwmLed(6, 0x60);
-PwmLed joy1SelectedLed = PwmLed(7, 0x60);
-PwmLed joy2SelectedLed = PwmLed(8, 0x60);
+PwmLed autoFireALed = PwmLed(5, 0x18);
+PwmLed autoFireBLed = PwmLed(6, 0x18);
+PwmLed joy1SelectedLed = PwmLed(7, 0x18);
+PwmLed joy2SelectedLed = PwmLed(8, 0x18);
 
 Pot autoFireAPot = Pot(12);
 Pot autoFireBPot = Pot(13);
@@ -106,7 +106,6 @@ DualOutMode dualOutMode = DualOutMode(
   joystick1Out, joystick2Out,
   joy1SelectedLed, joy2SelectedLed
 );
-
 
 /*******************************************************************************
  * Input router
